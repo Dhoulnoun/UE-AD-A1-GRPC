@@ -3,6 +3,8 @@ syntax = "proto3";
 service Movie {
     rpc GetMovieByID(MovieID) returns (MovieData) {}
     rpc GetListMovies(Empty) returns (stream MovieData){}
+    rpc CreateMovie(MovieData) returns (MovieData){}
+    rpc UpdateMovie(MovieData) returns (MovieData){}
 }
 
 message MovieID {

@@ -24,6 +24,32 @@ class MovieServicer(movie_pb2_grpc.MovieServicer):
             yield movie_pb2.MovieData(title=movie['title'], rating=movie['rating'], director=movie['director'],
                                       id=movie['id'])
 
+    def CreateMovie(self, request, context):
+        movie = {
+            "title": request.title,
+            "rating": request.rating,
+            "director": request.director,
+            "id": request.id
+        }
+        self.db.append(movie)
+        return movie_pb2.MovieData(title=request.title, rating=request.rating, director=request.director, id=request.id)
+
+    def UpdateMovie(self,request,context):
+        newMovie = {
+            "title":request.title,
+            "rating":request.rating,
+            "director": request.director,
+            "id": request.id
+        }
+        for movie in self.db:
+            if movie['id'] == newMovie["id"]:
+                movie['title']= newMovie['title']
+                movie['rating']= newMovie['rating']
+                movie['director']= newMovie['director']
+                print("Movie found!")
+                return movie_pb2.MovieData(title=request.title, rating=request.rating, director=request.director, id=request.id);
+
+
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
