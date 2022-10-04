@@ -14,3 +14,7 @@ message MovieData {
     string director = 3;
     string id = 4;
 }
+
+message Empty {
+
+}
