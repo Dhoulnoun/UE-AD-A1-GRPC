@@ -49,6 +49,13 @@ class MovieServicer(movie_pb2_grpc.MovieServicer):
                 print("Movie found!")
                 return movie_pb2.MovieData(title=request.title, rating=request.rating, director=request.director, id=request.id);
 
+    def DeleteMovie(self,request,context):
+        for movie in self.db:
+            if movie['id'] == request.id:
+                self.db.remove(movie)
+                print("Movie found!")
+                return movie_pb2.MovieData(title=request.title, rating=request.rating, director=request.director, id=request.id);
+        return movie_pb2.MovieData(title="", rating=0, director="", id="")
 
 
 def serve():

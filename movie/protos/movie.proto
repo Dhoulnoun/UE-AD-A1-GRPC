@@ -5,6 +5,7 @@ service Movie {
     rpc GetListMovies(Empty) returns (stream MovieData){}
     rpc CreateMovie(MovieData) returns (MovieData){}
     rpc UpdateMovie(MovieData) returns (MovieData){}
+    rpc DeleteMovie(MovieID) returns (MovieData){}
 }
 
 message MovieID {

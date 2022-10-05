@@ -15,6 +15,21 @@ def get_list_movies(stub):
         print("Movie called %s" % (movie.title))
 
 
+def create_movie(stub, title, rating, director, id):
+    movie = stub.CreateMovie(movie_pb2.MovieData(title=title, rating=rating, director=director, id=id))
+    print(movie)
+
+
+def update_movie(stub, title, rating, director, id):
+    movie = stub.UpdateMovie(movie_pb2.MovieData(title=title, rating=rating, director=director, id=id))
+    print(movie)
+
+
+def delete_movie(stub, id):
+    movie = stub.DeleteMovie(id)
+    print(movie)
+
+
 def run():
     # NOTE(gRPC Python Team): .close() is possible on a channel and should be
     # used in circumstances in which the with statement does not fit the needs
@@ -28,6 +43,15 @@ def run():
 
         print("-------------- GetListMovies --------------")
         get_list_movies(stub)
+
+        print("-------------- CreateMovie --------------")
+        create_movie(stub, "The Matrix", 5, "Wachowski", "a8034f44-aee4-44cf-b32c-74cf452aaaae")
+
+        print("-------------- UpdateMovie --------------")
+        update_movie(stub, "The Matrix", 5, "Wachowsk", "a8034f44-aee4-44cf-b32c-74cf452aaaae")
+
+        print("-------------- DeleteMovie --------------")
+        delete_movie(stub, movieid)
 
     channel.close()
 
