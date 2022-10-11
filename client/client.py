@@ -55,8 +55,6 @@ def run():
         print("-------------- DeleteMovie --------------")
         delete_movie(stub, movieid)
 
-        stub = showtime_pb2_grpc.ShowtimeStub(channel)
-
     channel.close()
 
     with grpc.insecure_channel('localhost:3002') as channel:
