@@ -14,7 +14,7 @@ class MovieServicer(movie_pb2_grpc.MovieServicer):
     def GetMovieByID(self, request, context):
         for movie in self.db:
             if movie['id'] == request.id:
-                print("Movie found!")
+                print("Movie found! Returning")
                 return movie_pb2.MovieData(title=movie['title'], rating=movie['rating'], director=movie['director'],
                                            id=movie['id'])
         return movie_pb2.MovieData(title="", rating=0, director="", id="")
@@ -46,16 +46,16 @@ class MovieServicer(movie_pb2_grpc.MovieServicer):
                 movie['title']= newMovie['title']
                 movie['rating']= newMovie['rating']
                 movie['director']= newMovie['director']
-                print("Movie found!")
+                print("Movie found! Updated")
                 return movie_pb2.MovieData(title=request.title, rating=request.rating, director=request.director, id=request.id);
 
     def DeleteMovie(self,request,context):
         for movie in self.db:
             if movie['id'] == request.id:
                 self.db.remove(movie)
-                print("Movie found!")
-                return movie_pb2.MovieData(title=request.title, rating=request.rating, director=request.director, id=request.id);
-        return movie_pb2.MovieData(title="", rating=0, director="", id="")
+                print("Movie found! Deleted")
+                return movie_pb2.MovieID(id=request.id);
+        return movie_pb2.MovieID(id="")
 
 
 def serve():

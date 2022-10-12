@@ -2,13 +2,14 @@ import grpc
 
 import movie_pb2
 import movie_pb2_grpc
-import showtime_pb2
 import showtime_pb2_grpc
+import showtime_pb2
 
 
 def get_movie_by_id(stub, id):
     movie = stub.GetMovieByID(id)
     print(movie)
+    return movie
 
 
 def get_list_movies(stub):
@@ -28,6 +29,7 @@ def update_movie(stub, title, rating, director, id):
 
 
 def delete_movie(stub, id):
+    print("hello")
     movie = stub.DeleteMovie(id)
     print(movie)
 
@@ -53,6 +55,7 @@ def run():
         update_movie(stub, "The Matrix", 5, "Wachowsk", "a8034f44-aee4-44cf-b32c-74cf452aaaae")
 
         print("-------------- DeleteMovie --------------")
+        movieid=movie_pb2.MovieID(id="a8034f44-aee4-44cf-b32c-74cf452aaaae")
         delete_movie(stub, movieid)
 
     channel.close()
@@ -61,15 +64,17 @@ def run():
         stub = showtime_pb2_grpc.ShowtimeStub(channel)
 
         print("-------------- GetMovieByDate --------------")
-        date = showtime_pb2.Date(date="2019-11-01")
+        date = showtime_pb2.Date(date="20151130")
         movie = stub.GetMovieByDate(date)
         print(movie)
 
         print("-------------- GetListSchedule --------------")
-        allSchedule = stub.GetListSchedule(showtime_pb2.Empty())
+        allSchedule = stub.GetListSchedule(showtime_pb2.EmptyS())
+        print(allSchedule)
         for schedule in allSchedule:
             print(schedule.date)
-            print(schedule.movie)
+            print(schedule.movies)
+    channel.close()
 
 
 if __name__ == '__main__':

@@ -14,19 +14,19 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0eshowtime.proto\"\x07\n\x05\x45mpty\",\n\x0cScheduleData\x12\x0c\n\x04\x64\x61te\x18\x01 \x01(\t\x12\x0e\n\x06movies\x18\x02 \x03(\t\"\x14\n\x04\x44\x61te\x12\x0c\n\x04\x64\x61te\x18\x01 \x01(\t2d\n\x08Showtime\x12,\n\x0fGetListSchedule\x12\x06.Empty\x1a\r.ScheduleData\"\x00\x30\x01\x12*\n\x0eGetMovieByDate\x12\x05.Date\x1a\r.ScheduleData\"\x00\x30\x01\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0eshowtime.proto\"\x08\n\x06\x45mptyS\",\n\x0cScheduleData\x12\x0c\n\x04\x64\x61te\x18\x01 \x01(\t\x12\x0e\n\x06movies\x18\x02 \x03(\t\"\x14\n\x04\x44\x61te\x12\x0c\n\x04\x64\x61te\x18\x01 \x01(\t2c\n\x08Showtime\x12-\n\x0fGetListSchedule\x12\x07.EmptyS\x1a\r.ScheduleData\"\x00\x30\x01\x12(\n\x0eGetMovieByDate\x12\x05.Date\x1a\r.ScheduleData\"\x00\x62\x06proto3')
 
 
 
-_EMPTY = DESCRIPTOR.message_types_by_name['Empty']
+_EMPTYS = DESCRIPTOR.message_types_by_name['EmptyS']
 _SCHEDULEDATA = DESCRIPTOR.message_types_by_name['ScheduleData']
 _DATE = DESCRIPTOR.message_types_by_name['Date']
-Empty = _reflection.GeneratedProtocolMessageType('Empty', (_message.Message,), {
-  'DESCRIPTOR' : _EMPTY,
+EmptyS = _reflection.GeneratedProtocolMessageType('EmptyS', (_message.Message,), {
+  'DESCRIPTOR' : _EMPTYS,
   '__module__' : 'showtime_pb2'
-  # @@protoc_insertion_point(class_scope:Empty)
+  # @@protoc_insertion_point(class_scope:EmptyS)
   })
-_sym_db.RegisterMessage(Empty)
+_sym_db.RegisterMessage(EmptyS)
 
 ScheduleData = _reflection.GeneratedProtocolMessageType('ScheduleData', (_message.Message,), {
   'DESCRIPTOR' : _SCHEDULEDATA,
@@ -46,12 +46,12 @@ _SHOWTIME = DESCRIPTOR.services_by_name['Showtime']
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  _EMPTY._serialized_start=18
-  _EMPTY._serialized_end=25
-  _SCHEDULEDATA._serialized_start=27
-  _SCHEDULEDATA._serialized_end=71
-  _DATE._serialized_start=73
-  _DATE._serialized_end=93
-  _SHOWTIME._serialized_start=95
+  _EMPTYS._serialized_start=18
+  _EMPTYS._serialized_end=26
+  _SCHEDULEDATA._serialized_start=28
+  _SCHEDULEDATA._serialized_end=72
+  _DATE._serialized_start=74
+  _DATE._serialized_end=94
+  _SHOWTIME._serialized_start=96
   _SHOWTIME._serialized_end=195
 # @@protoc_insertion_point(module_scope)

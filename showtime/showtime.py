@@ -13,12 +13,12 @@ class ShowtimeServicer(showtime_pb2_grpc.ShowtimeServicer):
     def GetMovieByDate (self, request, context):
         for time in self.db:
             if time['date'] == request.date:
-                return showtime_pb2.Scheduledata(date=time['date'], movie=time['movies'])
-        return showtime_pb2.Scheduledata(date="Not Found", movie="Not Found")
+                return showtime_pb2.ScheduleData(date=time['date'], movies=time['movies'])
+        return showtime_pb2.ScheduleData(date="Not Found", movies="Not Found")
 
     def GetListSchedule(self, request, context):
         for time in self.db:
-            yield showtime_pb2.Scheduledata(date=time['date'], movie=time['movies'])
+            yield showtime_pb2.ScheduleData(date=time['date'], movies=time['movies'])
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     showtime_pb2_grpc.add_ShowtimeServicer_to_server(ShowtimeServicer(), server)

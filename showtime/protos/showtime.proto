@@ -1,11 +1,11 @@
 syntax = "proto3";
 
 service Showtime{
-    rpc GetListSchedule (Empty) returns (stream ScheduleData) {}
-    rpc GetMovieByDate (Date) returns (stream ScheduleData) {}
+    rpc GetListSchedule (EmptyS) returns (stream ScheduleData) {}
+    rpc GetMovieByDate (Date) returns (ScheduleData) {}
 }
 
-message Empty {}
+message EmptyS {}
 
 message ScheduleData {
     string date =1;
